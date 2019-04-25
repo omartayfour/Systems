@@ -1,5 +1,6 @@
 package javaapplication1;
 
+import javax.xml.stream.Location;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -18,41 +19,42 @@ import java.util.Scanner;
  */
 public class assembler {
 
-     ArrayList<instruction> array = new ArrayList<instruction>();
     String operation;
     String operands;
     String label;
-     String CurrentLoc;
+    String CurrentLoc;
+    ArrayList<instruction> instList= new ArrayList<instruction>();
 
 
-    public void handleInstruction(String currentLine, Data d) throws FileNotFoundException{
-        String garbage;
+    public void handleInstruction(String currentLine, Data d) throws FileNotFoundException {
         String[] middlepart;
-        String [] operationsRead;
-        int i=0;
-        int OperandCount;
-        int cOffset;
+        String currentAddress;
         errors e = new errors();
-        int state;//operation checker
-        d.loadData();
-
-        label=currentLine.substring(0,8);
-
+        LocationCounter l = LocationCounter.getInstance();
+        int length = currentLine.length();
+        instruction i;
+        label = currentLine.substring(0, 8);
         //if (!(label.startsWith(" ")))
-        operation=currentLine.substring(9,16);
-        middlepart=operation.split(" "); // taking part before spaces only
-        operation=middlepart[0];
-        System.out.println(operation);
-        e.checkOperation(operation,d);
-
-        if(currentLine.length()>=16){
-            operands=currentLine.substring(17,currentLine.length());
-            e.errorCheckerOperands(operation,operands,d);
+        operation = currentLine.substring(9, 16);
+        middlepart = operation.split(" "); // taking part before spaces only
+        operation = middlepart[0];
+        currentAddress=l.Locations.get(l.Locations.size()-1);
+        if (length >= 16) {
+            operands = currentLine.substring(17, length);
+            // e.errorCheckerOperands(operation, operands, d);//this can't be here because operands can be with directives too.
+            if (operation.matches("START")) {
+                l.getStartingLocation(operands);
+            }
+            i= new instruction(currentAddress,label,operation,operands);
         }
-        else {
-
+        else
+        {
+            i = new instruction(currentAddress,label,operation,"NULL");
         }
 
+        instList.add(i);
+
+    }
 
 
 
@@ -106,4 +108,4 @@ public class assembler {
     
     }
     
-    }*/}}
+    }*/}

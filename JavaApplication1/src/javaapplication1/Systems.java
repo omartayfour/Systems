@@ -12,10 +12,8 @@ import java.util.Scanner;
 public class Systems {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Data d = new Data();
-        String test = "         ADDR    X";
-        assembler a = new assembler();
-        a.handleInstruction(test,d);
+        file f = new file();
+        f.filePass1();
 
 
         

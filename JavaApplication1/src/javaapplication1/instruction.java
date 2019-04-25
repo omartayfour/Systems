@@ -4,6 +4,9 @@ package javaapplication1;/*
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author BCC
@@ -13,6 +16,7 @@ public class instruction {
     String operand;
     String operation;
     String label;
+
 
     public String getLabel() {
         return label;
@@ -45,5 +49,12 @@ public class instruction {
     public void setOperation(String operation) {
         this.operation = operation;
     }
-    
+
+    public instruction(String address, String label, String operation, String operand)
+    {
+        this.address=address;
+        this.label=label;
+        this.operation=operation;
+        this.operand=operand;
+    }
 }
