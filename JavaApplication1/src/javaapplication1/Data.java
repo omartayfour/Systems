@@ -25,7 +25,7 @@ public class Data {
         getOptable().put("JLT",new op("JLT",1,3, "mem"));
         getOptable().put("JGT",new op("JGT",1,3, "mem"));
         getOptable().put("TIX",new op("TIX",1,3, "mem"));
-
+        getOptable().put("TIXR",new op("TIXR",1,2, "reg"));
 
 
 
