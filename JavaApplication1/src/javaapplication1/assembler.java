@@ -34,6 +34,7 @@ public class assembler {
         int cOffset;
         errors e = new errors();
         int state;//operation checker
+        d.loadData();
 
         label=currentLine.substring(0,8);
 
@@ -41,10 +42,12 @@ public class assembler {
         operation=currentLine.substring(9,16);
         middlepart=operation.split(" "); // taking part before spaces only
         operation=middlepart[0];
+        System.out.println(operation);
+        e.checkOperation(operation,d);
 
         if(currentLine.length()>=16){
-            operands=currentLine.substring(17,30);
-        // checking operands w kda
+            operands=currentLine.substring(17,currentLine.length());
+            e.errorCheckerOperands(operation,operands,d);
         }
         else {
 

@@ -7,7 +7,7 @@ public class Data {
      static HashMap<String, Label> symtable= new HashMap<String, Label>();
      private static HashMap<String, Directives> dirtable= new HashMap<String, Directives>();
 
-    private static void loadData()
+    public final void loadData()
     {
         getOptable().put("RMO",new op("RMO",2,2, "reg"));
         getOptable().put("LDr",new op("LDr",1,3, "mem"));
