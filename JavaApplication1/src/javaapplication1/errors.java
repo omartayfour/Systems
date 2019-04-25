@@ -22,7 +22,7 @@ private static void errorPrinter(){
     errorsList[12]="missing end statement";
 }
 
-public static int checkOperation(String operation, Data d)
+public int checkOperation(String operation, Data d)
 {
     if(!d.optable.containsKey(operation) && !d.getDirtable().containsKey(operation)) // error number 7
     {
@@ -31,9 +31,10 @@ public static int checkOperation(String operation, Data d)
 
     }
     else {
-        if (d.optable.containsKey(operation))
+        if (d.optable.containsKey(operation)) {
+            System.out.println("instruction " + operation);
             return d.optable.get(operation).format;
-        else
+        }else
             return 1;// if return 1, then it's a directive
     }
 }
@@ -53,7 +54,7 @@ public void errorCheckerDirectives(String operation,String operands, Data d)
 
 
 }
-public static void errorCheckerOperands(String operation, String operands, Data d) // not directive
+public void errorCheckerOperands(String operation, String operands, Data d) // not directive
 {
     if(operands.contains(","))
         OperandCount=2;

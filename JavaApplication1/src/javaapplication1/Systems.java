@@ -12,14 +12,10 @@ import java.util.Scanner;
 public class Systems {
 
     public static void main(String[] args) throws FileNotFoundException {
-
-       String s="Omar Tayfour";
-       String x;
-       String[] temp;
-       x=s;
-       temp=x.split(" ");
-       x=temp[0];
-       System.out.println(x);
+        Data d = new Data();
+        String test = "         ADDR    X";
+        assembler a = new assembler();
+        a.handleInstruction(test,d);
 
 
         
