@@ -5,7 +5,11 @@ import java.util.HashMap;
 public class Data {
      static HashMap<String, op> optable = new HashMap<String, op>();
      static HashMap<String, Label> symtable= new HashMap<String, Label>();
-     private static HashMap<String, Directives> dirtable= new HashMap<String, Directives>();
+     static HashMap<String, Directives> dirtable= new HashMap<String, Directives>();
+
+    public Data() {
+        loadData();
+    }
 
     public final void loadData()
     {
@@ -29,10 +33,10 @@ public class Data {
 
 
 
-        getDirtable().put("START", new Directives("START", "0"));
-        getDirtable().put("ORG", new Directives("ORG","0"));
-        getDirtable().put("END",new Directives("END","0"));
-        getDirtable().put("BYTE",new Directives("BYTE","0"));
+        getDirtable().put("START", new Directives("START", "0",0));
+        getDirtable().put("ORG", new Directives("ORG","0",0));
+        getDirtable().put("END",new Directives("END","0",0));
+        getDirtable().put("BYTE",new Directives("BYTE","0",3));
 
     }
 

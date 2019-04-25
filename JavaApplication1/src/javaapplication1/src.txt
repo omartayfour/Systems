@@ -1,0 +1,7 @@
+.2345678901234567890
+PROG     START   0100
+         ADD     X,R
+         SUB     X
+         ADDR    X,R
+         MUL     X
+         END
